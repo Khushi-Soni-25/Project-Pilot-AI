@@ -1,0 +1,13 @@
+# ProjectPilot AI - Streamlit theme (matches the web frontend palette)
+[theme]
+base = "dark"
+primaryColor = "#5799F5"
+backgroundColor = "#080A0F"
+secondaryBackgroundColor = "#111722"
+textColor = "#E8ECF4"
+borderColor = "#202938"
+linkColor = "#5799F5"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false

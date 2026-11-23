@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project matcher | ProjectPilot AI</title>
+    <meta name="description" content="Enter your domain, skill level, interests, time and language to get ranked project recommendations with full learning plans." />
+    <meta name="theme-color" content="#080A0F" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/workspace.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#results">Skip to results</a>
+
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="ProjectPilot AI home">
+          <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-logo"></use></svg></span>
+          <span>ProjectPilot <small>AI</small></span>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#how">How it works</a>
+          <a href="app.html" aria-current="page">Matcher</a>
+        </div>
+
+        <div class="nav-actions">
+          <span class="status" id="apiStatus" role="status">Checking API</span>
+          <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="navLinks" aria-expanded="false"></button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container workspace-page">
+      <div class="page-head">
+        <h1>Project matcher</h1>
+        <p>Set your preferences and get ranked project ideas, each with a full learning plan.</p>
+      </div>
+
+      <div class="workspace">
+        <!-- ================= PREFERENCES ================= -->
+        <form class="preference-form glass" id="preferenceForm" novalidate>
+          <div class="form-header">
+            <span class="form-icon"><svg class="icon" aria-hidden="true"><use href="#i-sliders"></use></svg></span>
+            <div>
+              <h2>Your preferences</h2>
+              <p>The more specific your interests, the sharper the match.</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="domain">Domain</label>
+            <div class="select-wrap">
+              <select id="domain" name="domain" required>
+                <option value="">Loading domains...</option>
+              </select>
+              <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="skillLevel">Skill level</label>
+            <div class="select-wrap">
+              <select id="skillLevel" name="skill_level" required>
+                <option value="">Loading skill levels...</option>
+              </select>
+              <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="interests">Interests</label>
+            <input
+              id="interests"
+              name="interests"
+              type="text"
+              placeholder="NLP, finance, dashboard"
+              minlength="2"
+              autocomplete="off"
+              required
+            />
+            <div class="suggest" aria-label="Interest suggestions">
+              <button type="button" class="chip-btn" data-interest="NLP">NLP</button>
+              <button type="button" class="chip-btn" data-interest="finance">finance</button>
+              <button type="button" class="chip-btn" data-interest="dashboard">dashboard</button>
+              <button type="button" class="chip-btn" data-interest="healthcare">healthcare</button>
+            </div>
+          </div>
+
+          <div class="two-column">
+            <div class="field">
+              <label for="availableTime">Available time</label>
+              <div class="select-wrap">
+                <select id="availableTime" name="available_time" required>
+                  <option value="">Loading...</option>
+                </select>
+                <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="preferredLanguage">Language</label>
+              <div class="select-wrap">
+                <select id="preferredLanguage" name="preferred_language" required>
+                  <option value="">Loading...</option>
+                </select>
+                <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="range-head">
+              <label for="topN">Number of results</label>
+              <span class="range-value"><span id="topNValue">5</span></span>
+            </div>
+            <input id="topN" name="top_n" type="range" min="3" max="10" value="5" />
+          </div>
+
+          <p class="form-error" id="formError" role="alert"></p>
+
+          <button class="button button-primary button-lg submit-button" type="submit">
+            <svg class="icon" aria-hidden="true"><use href="#i-zap"></use></svg>
+            Find projects
+          </button>
+        </form>
+
+        <!-- ================= RESULTS ================= -->
+        <section class="results-panel" id="results" aria-labelledby="resultsTitle">
+          <div class="results-header">
+            <div>
+              <h2 id="resultsTitle">Top matches</h2>
+              <p id="resultsSub">Your ranked projects appear here.</p>
+            </div>
+          </div>
+
+          <div class="summary hidden" id="summary" aria-label="Result summary"></div>
+
+          <div class="loading-state hidden" id="loadingState" aria-live="polite">
+            <p class="loading-note" id="loadingNote">Finding your best project matches</p>
+            <div class="skeleton-list" aria-hidden="true">
+              <div class="skeleton"></div>
+              <div class="skeleton"></div>
+              <div class="skeleton"></div>
+            </div>
+          </div>
+
+          <div class="empty-state glass" id="emptyState">
+            <span class="empty-icon"><svg class="icon" aria-hidden="true"><use href="#i-compass"></use></svg></span>
+            <strong>Ready when you are</strong>
+            <p>Choose your preferences and select Find projects. Your ranked matches will show up here.</p>
+          </div>
+
+          <div class="cards-grid" id="resultsGrid" aria-live="polite"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ================= PROJECT DETAILS DRAWER ================= -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="drawer hidden" id="projectDetails" role="dialog" aria-modal="true" aria-labelledby="detailTitle" tabindex="-1">
+      <div class="drawer-head">
+        <div class="drawer-top">
+          <span class="drawer-kicker">Project plan</span>
+          <button class="icon-button" type="button" id="closeDetails" aria-label="Close project details">
+            <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+          </button>
+        </div>
+        <h2 id="detailTitle"></h2>
+        <p id="detailDescription"></p>
+        <div class="badge-row" id="detailMeta"></div>
+
+        <div class="tabs" role="tablist" aria-label="Project details">
+          <button class="tab-button active" type="button" role="tab" data-tab="roadmap">Roadmap</button>
+          <button class="tab-button" type="button" role="tab" data-tab="skills">Skills and tools</button>
+          <button class="tab-button" type="button" role="tab" data-tab="resources">Resources</button>
+          <button class="tab-button" type="button" role="tab" data-tab="future">Future scope</button>
+        </div>
+      </div>
+
+      <div class="drawer-body">
+        <div class="tab-content active" id="tab-roadmap" role="tabpanel"></div>
+        <div class="tab-content" id="tab-skills" role="tabpanel"></div>
+        <div class="tab-content" id="tab-resources" role="tabpanel"></div>
+        <div class="tab-content" id="tab-future" role="tabpanel"></div>
+      </div>
+    </aside>
+
+    <footer class="site-footer slim">
+      <div class="container">
+        <div class="footer-base compact">
+          <span>© <span data-year>2026</span> ProjectPilot AI</span>
+          <span>Intelligent project recommendation and learning assistant</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/icons.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

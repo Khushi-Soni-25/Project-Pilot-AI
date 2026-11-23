@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProjectPilot AI | Find the project that fits you</title>
+    <meta
+      name="description"
+      content="ProjectPilot AI matches students with practical projects by domain, skill level, interests, time and language, then hands over a roadmap, datasets and APIs."
+    />
+    <meta name="theme-color" content="#080A0F" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/landing.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="ProjectPilot AI home">
+          <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-logo"></use></svg></span>
+          <span>ProjectPilot <small>AI</small></span>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#index">Dataset</a>
+          <a href="app.html">Matcher</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="button button-primary" href="app.html">Find my project</a>
+          <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="navLinks" aria-expanded="false"></button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ================= HERO ================= -->
+      <section class="hero" id="home">
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <span class="status" id="heroStatus" role="status">Checking backend</span>
+            <h1>Find the project that <span class="grad">fits your skills</span>, goals and timeline.</h1>
+            <p class="lead">
+              Tell ProjectPilot your domain, level, interests and available time. It ranks thousands of
+              project ideas and gives you a roadmap, libraries, datasets and APIs for the one you pick.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary button-lg" href="app.html">Find my project</a>
+              <a class="button button-ghost button-lg" href="#how">See how it works</a>
+            </div>
+            <ul class="hero-facts" aria-label="What you get">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Ranked by match score</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Step-by-step roadmaps</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Free datasets and APIs</li>
+            </ul>
+          </div>
+
+          <!-- Product preview. Rows are real results from the recommender for the query shown. -->
+          <div class="hero-visual" aria-label="Preview of the project matcher showing ranked results">
+            <div class="preview glass">
+              <div class="preview-bar">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="preview-title">Project matcher</span>
+                <span class="preview-live"><i></i>Sample query</span>
+              </div>
+
+              <div class="preview-body">
+                <div class="query">
+                  <span class="chip">Natural Language Processing</span>
+                  <span class="chip level-chip beginner">Beginner</span>
+                  <span class="chip">Python</span>
+                  <span class="chip">chatbot sentiment analysis</span>
+                </div>
+
+                <div class="preview-head">
+                  <span>Top matches</span>
+                  <span>Match score</span>
+                </div>
+
+                <ol class="rank" id="heroRank">
+                  <li style="--score: 69.16; --i: 0">
+                    <span class="rank-n">1</span>
+                    <div class="rank-main">
+                      <strong>Agriculture Question Answering Tool Predictor</strong>
+                      <span class="rank-meta">1-3 Days · Python</span>
+                      <span class="rank-bar"><i></i></span>
+                    </div>
+                    <span class="rank-score"><b>69.2</b>%</span>
+                  </li>
+                  <li style="--score: 68.84; --i: 1">
+                    <span class="rank-n">2</span>
+                    <div class="rank-main">
+                      <strong>Small Business Question Answering Tool Dashboard</strong>
+                      <span class="rank-meta">1-3 Days · Python</span>
+                      <span class="rank-bar"><i></i></span>
+                    </div>
+                    <span class="rank-score"><b>68.8</b>%</span>
+                  </li>
+                  <li style="--score: 68.53; --i: 2">
+                    <span class="rank-n">3</span>
+                    <div class="rank-main">
+                      <strong>Small Business Question Answering Tool Dashboard</strong>
+                      <span class="rank-meta">8-15 Days · Python; TypeScript</span>
+                      <span class="rank-bar"><i></i></span>
+                    </div>
+                    <span class="rank-score"><b>68.5</b>%</span>
+                  </li>
+                  <li style="--score: 67.51; --i: 3">
+                    <span class="rank-n">4</span>
+                    <div class="rank-main">
+                      <strong>Agriculture Question Answering Tool Predictor</strong>
+                      <span class="rank-meta">1-3 Days · Python</span>
+                      <span class="rank-bar"><i></i></span>
+                    </div>
+                    <span class="rank-score"><b>67.5</b>%</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="float-card float-roadmap glass" aria-hidden="true">
+              <div class="float-title"><svg class="icon"><use href="#i-route"></use></svg>Roadmap · 7 steps</div>
+              <ul>
+                <li class="done">Understand the problem</li>
+                <li class="done">Set up the project</li>
+                <li class="now">Build the core feature</li>
+              </ul>
+            </div>
+
+            <div class="float-card float-engine glass" aria-hidden="true">
+              <svg class="icon"><use href="#i-cpu"></use></svg>
+              <div>
+                <strong>TF-IDF + cosine similarity</strong>
+                <span>Scored across the full index</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FEATURES (BENTO) ================= -->
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Everything you need between “what should I build” and “I’m building it”.</h2>
+            <p>One query returns ranked ideas. One click turns an idea into a plan you can start today.</p>
+          </div>
+
+          <div class="bento">
+            <!-- A: explainable matching -->
+            <article class="bento-card spot glass b-explain reveal">
+              <div class="bento-text">
+                <span class="bento-icon"><svg class="icon"><use href="#i-target"></use></svg></span>
+                <h3>Matches you can explain</h3>
+                <p>
+                  Your preferences and every project become text profiles. Shared terms drive the score, so
+                  a high match always has a visible reason.
+                </p>
+              </div>
+              <div class="viz-tokens" aria-label="Example of shared terms between a user profile and a project">
+                <div class="tok-row">
+                  <span class="tok-label">Your profile</span>
+                  <span class="tok hit">natural</span><span class="tok hit">language</span><span class="tok hit">processing</span>
+                  <span class="tok hit">beginner</span><span class="tok">chatbot</span><span class="tok">sentiment</span><span class="tok hit">python</span>
+                </div>
+                <div class="tok-row">
+                  <span class="tok-label">Top project</span>
+                  <span class="tok">agriculture</span><span class="tok">question</span><span class="tok">answering</span>
+                  <span class="tok hit">natural</span><span class="tok hit">language</span><span class="tok hit">processing</span>
+                  <span class="tok hit">beginner</span><span class="tok hit">python</span>
+                </div>
+                <div class="tok-score">
+                  <span class="tok-bar"><i style="width: 69%"></i></span>
+                  <strong>69% match</strong>
+                </div>
+              </div>
+            </article>
+
+            <!-- B: roadmap -->
+            <article class="bento-card spot glass b-roadmap reveal" style="--d: 80ms">
+              <span class="bento-icon"><svg class="icon"><use href="#i-route"></use></svg></span>
+              <h3>A roadmap for every project</h3>
+              <p>Each idea opens into an ordered plan, from problem statement to demo.</p>
+              <ol class="timeline">
+                <li>Understand the problem statement</li>
+                <li>Set up the project structure</li>
+                <li>Build the core feature</li>
+                <li>Test with sample inputs</li>
+                <li>Create a simple user interface</li>
+                <li>Customize for your users</li>
+                <li>Prepare README and demo</li>
+              </ol>
+            </article>
+
+            <!-- C: skills & libraries -->
+            <article class="bento-card spot glass b-skills reveal" style="--d: 40ms">
+              <span class="bento-icon"><svg class="icon"><use href="#i-layers"></use></svg></span>
+              <h3>Skills and libraries up front</h3>
+              <p>Know what to learn and what to install before you commit.</p>
+              <div class="chip-cloud">
+                <span class="chip">Data handling</span><span class="chip">Debugging</span><span class="chip">UI basics</span>
+                <span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">Streamlit</span>
+              </div>
+            </article>
+
+            <!-- D: datasets & APIs -->
+            <article class="bento-card spot glass b-data reveal" style="--d: 80ms">
+              <span class="bento-icon"><svg class="icon"><use href="#i-database"></use></svg></span>
+              <h3>Free datasets and APIs</h3>
+              <p>Named datasets and API options for each project, so you can start with real data.</p>
+              <ul class="src-list" aria-label="Example datasets">
+                <li><svg class="icon"><use href="#i-database"></use></svg>AG News</li>
+                <li><svg class="icon"><use href="#i-database"></use></svg>Open Assistant Conversations</li>
+              </ul>
+            </article>
+
+            <!-- E: sized to time -->
+            <article class="bento-card spot glass b-time reveal">
+              <div class="bento-text">
+                <span class="bento-icon"><svg class="icon"><use href="#i-clock"></use></svg></span>
+                <h3>Sized to your calendar</h3>
+                <p>From a weekend build to a three-month capstone. Filter by the time you actually have.</p>
+              </div>
+              <div class="viz-time" role="img" aria-label="Projects by estimated time: 352 for 1 to 3 days, 374 for 4 to 7 days, 924 for 8 to 15 days, 1100 for 16 to 30 days, 550 for 1 to 3 months">
+                <div class="time-col" style="--h: 32%"><b>352</b><i></i><span>1-3 days</span></div>
+                <div class="time-col" style="--h: 34%"><b>374</b><i></i><span>4-7 days</span></div>
+                <div class="time-col" style="--h: 84%"><b>924</b><i></i><span>8-15 days</span></div>
+                <div class="time-col" style="--h: 100%"><b>1,100</b><i></i><span>16-30 days</span></div>
+                <div class="time-col" style="--h: 50%"><b>550</b><i></i><span>1-3 months</span></div>
+              </div>
+            </article>
+
+            <!-- F: open API -->
+            <article class="bento-card spot glass b-api reveal" style="--d: 80ms">
+              <div class="bento-text">
+                <span class="bento-icon"><svg class="icon"><use href="#i-terminal"></use></svg></span>
+                <h3>Open API underneath</h3>
+                <p>A FastAPI backend with MongoDB storage and a JSON fallback. Build on it or call it directly.</p>
+              </div>
+              <pre class="code" aria-label="Example request to the recommend endpoint"><code><span class="c-m">POST</span> <span class="c-p">/recommend</span>
+{
+  <span class="c-k">"domain"</span>: <span class="c-s">"Machine Learning"</span>,
+  <span class="c-k">"skill_level"</span>: <span class="c-s">"Beginner"</span>,
+  <span class="c-k">"interests"</span>: <span class="c-s">"dashboard"</span>,
+  <span class="c-k">"top_n"</span>: <span class="c-n">5</span>
+}</code></pre>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= HOW IT WORKS ================= -->
+      <section class="section how" id="how">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>From a vague idea to a plan in three steps.</h2>
+          </div>
+
+          <ol class="steps">
+            <li class="step reveal">
+              <span class="step-n">1</span>
+              <h3>Describe what you want</h3>
+              <p>Pick a domain, skill level, time frame and language, then add the topics you care about.</p>
+              <div class="step-viz sv-form" aria-hidden="true">
+                <span>Domain<b>Machine Learning</b></span>
+                <span>Skill level<b>Beginner</b></span>
+                <span>Interests<b>recommendation dashboard</b></span>
+              </div>
+            </li>
+            <li class="step reveal" style="--d: 100ms">
+              <span class="step-n">2</span>
+              <h3>Compare ranked matches</h3>
+              <p>See the best projects first, each with a match score, level, duration and language.</p>
+              <div class="step-viz sv-rank" aria-hidden="true">
+                <span><i style="width: 92%"></i></span>
+                <span><i style="width: 78%"></i></span>
+                <span><i style="width: 61%"></i></span>
+              </div>
+            </li>
+            <li class="step reveal" style="--d: 200ms">
+              <span class="step-n">3</span>
+              <h3>Open the plan and start</h3>
+              <p>Get the roadmap, required skills and libraries, datasets, APIs and what to build next.</p>
+              <div class="step-viz sv-tabs" aria-hidden="true">
+                <span class="on">Roadmap</span><span>Skills</span><span>Resources</span><span>Future</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ================= INDEX / METRICS ================= -->
+      <section class="section" id="index">
+        <div class="container index-grid">
+          <div class="reveal">
+            <h2>A deep index, evenly covered.</h2>
+            <p class="index-lead">
+              The project database spans every domain at every level, so a beginner in Robotics gets as
+              much choice as an advanced learner in Machine Learning.
+            </p>
+
+            <dl class="metrics">
+              <div class="metric">
+                <dt>Projects indexed</dt>
+                <dd><span id="statProjects" data-count="3300">3,300</span></dd>
+              </div>
+              <div class="metric">
+                <dt>Domains</dt>
+                <dd><span id="statDomains" data-count="22">22</span></dd>
+              </div>
+              <div class="metric">
+                <dt>Language combinations</dt>
+                <dd><span id="statLanguages" data-count="29">29</span></dd>
+              </div>
+              <div class="metric">
+                <dt>Time frames</dt>
+                <dd><span id="statTimes" data-count="5">5</span></dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="index-panel glass reveal" style="--d: 100ms">
+            <div class="level-split">
+              <div class="level-head">
+                <h3>Balanced across skill levels</h3>
+                <span class="chip">1,100 each</span>
+              </div>
+              <div class="level-bar" role="img" aria-label="Projects split evenly across Beginner, Intermediate and Advanced">
+                <span class="l-beginner"></span><span class="l-intermediate"></span><span class="l-advanced"></span>
+              </div>
+              <ul class="level-legend">
+                <li><i class="l-beginner"></i>Beginner</li>
+                <li><i class="l-intermediate"></i>Intermediate</li>
+                <li><i class="l-advanced"></i>Advanced</li>
+              </ul>
+            </div>
+
+            <div class="domain-block">
+              <h3>Domains covered</h3>
+              <div class="chip-cloud" id="domainCloud">
+                <span class="chip">Artificial Intelligence</span><span class="chip">Machine Learning</span>
+                <span class="chip">Deep Learning</span><span class="chip">Data Science</span>
+                <span class="chip">Natural Language Processing</span><span class="chip">Computer Vision</span>
+                <span class="chip">Recommendation Systems</span><span class="chip">Web Development</span>
+                <span class="chip">Mobile App Development</span><span class="chip">Cybersecurity</span>
+                <span class="chip">Cloud Computing</span><span class="chip">DevOps</span>
+                <span class="chip">Internet of Things (IoT)</span><span class="chip">Robotics</span>
+                <span class="chip">Blockchain</span><span class="chip">Game Development</span>
+                <span class="chip">AR/VR</span><span class="chip">Big Data</span>
+                <span class="chip">Database Systems</span><span class="chip">Automation</span>
+                <span class="chip">Embedded Systems</span><span class="chip">UI/UX Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CTA ================= -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta glass reveal">
+            <div>
+              <h2>Pick your next build in under a minute.</h2>
+              <p>No sign-up. Choose your preferences and get a ranked list straight away.</p>
+            </div>
+            <a class="button button-primary button-lg" href="app.html">Open the matcher</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <a class="brand" href="index.html">
+              <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-logo"></use></svg></span>
+              <span>ProjectPilot <small>AI</small></span>
+            </a>
+            <p>An intelligent project recommendation and learning assistant for students.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="app.html">Project matcher</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#how">How it works</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Built with</h4>
+            <ul>
+              <li><a href="https://fastapi.tiangolo.com" target="_blank" rel="noreferrer">FastAPI</a></li>
+              <li><a href="https://scikit-learn.org" target="_blank" rel="noreferrer">scikit-learn</a></li>
+              <li><a href="https://www.mongodb.com" target="_blank" rel="noreferrer">MongoDB</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Project</h4>
+            <ul>
+              <li><a href="https://github.com/Khushi-Soni-25/Pilot_AI" target="_blank" rel="noreferrer">GitHub repository</a></li>
+              <li><a href="https://pilot-ai-8hig.onrender.com/docs" target="_blank" rel="noreferrer">API documentation</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-base">
+          <span>© <span data-year>2026</span> ProjectPilot AI</span>
+          <span>Designed and built by Khushi Soni</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/icons.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/landing.js"></script>
+  </body>
+</html>

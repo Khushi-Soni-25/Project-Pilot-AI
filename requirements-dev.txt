@@ -1,0 +1,5 @@
+-r requirements.txt
+# Optional: only needed for the real-HTTP tests (tests/test_api.py::HttpTests).
+# The rest of the suite runs on the standard library `unittest` (pytest also works).
+httpx
+pytest
